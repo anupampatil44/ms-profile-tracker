@@ -27,7 +27,7 @@ class MongoDB{
   
   static Future<List<Map<String,dynamic>>>searchDocs(Map<String,dynamic> data) async{
     try{
-        final alumnis=await alumni_collection.find({r'$or':[{"name":data["name"]},{"pgCourse":data["pgCourse"]},{"university.name":data["universityName"]}]}).toList();
+        final alumnis=await alumni_collection.find({r'$or':[{"fullname":data["fullname"]},{"pgCourse.name":data["pgCourse"]},{"university.name":data["universityName"]}]}).toList();
         return alumnis;
     }
     catch(e){

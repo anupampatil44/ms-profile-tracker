@@ -27,7 +27,7 @@ class _HomeSState extends State<HomeS> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("MS Profiles Tracker\nStudent HomePage"),
+          title: Text("Welcome, ${widget.username}"),
           actions: [
             IconButton(
                 onPressed: () async {
@@ -36,7 +36,7 @@ class _HomeSState extends State<HomeS> {
                 icon: Icon(Icons.logout))
           ],
         ),
-        floatingActionButton: Row(
+        floatingActionButton: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             FloatingActionButton(
@@ -47,7 +47,7 @@ class _HomeSState extends State<HomeS> {
               child: Icon(Icons.search),
             ),
             SizedBox(
-              width: 10,
+              height: 10,
             ),
             FloatingActionButton(
               child: Icon(Icons.refresh),
@@ -61,9 +61,11 @@ class _HomeSState extends State<HomeS> {
           future: MongoDB.getDocuments(),
           builder: (BuildContext ctx, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
+              try{
               List<Map<String, dynamic>> l = snapshot.data;
-              print(l);
-              return ListView.builder(
+              //print(l);
+              if(l.isNotEmpty){
+                return ListView.builder(
                   itemCount: l.length,
                   itemBuilder: (BuildContext ctx, int index) {
                     Alumni a = Alumni.fromJson(l[index]);
@@ -71,12 +73,24 @@ class _HomeSState extends State<HomeS> {
                       padding: EdgeInsets.all(8),
                       child: ListTile(
                         title: Text(a.username.toString()),
+                        subtitle: Text((a.university!={}) ? a.university["name"] : ""),
+                        trailing: Text((a.pgCourse!={}) ? a.pgCourse["name"] : ""),
                         onTap: (){
                           Navigator.push(context, MaterialPageRoute(builder: (ctx)=>AlumniProfile(a)));
                         },
                       ),
                     );
                   });
+                }
+                else{
+                  return Center(
+                    child: Text("No Data Found :)"),
+                  );
+                }
+              }
+              catch(e){
+                return Center(child: Text("An Error Occurred"));
+              }
             } else {
               return Center(
                 child: CircularProgressIndicator(),
