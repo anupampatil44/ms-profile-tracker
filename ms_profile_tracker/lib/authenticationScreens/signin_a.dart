@@ -7,7 +7,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ms_profile_tracker/authenticationScreens/authservices.dart';
 import 'package:ms_profile_tracker/authenticationScreens/signup_a.dart';
-import 'package:ms_profile_tracker/pages/home_a.dart';
+import 'package:ms_profile_tracker/pages/alumni_dashboard.dart';
 
 class SigninA extends StatefulWidget {
   const SigninA({ Key? key }) : super(key: key);

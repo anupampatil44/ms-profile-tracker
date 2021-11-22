@@ -142,7 +142,7 @@ class _AlumniProfileState extends State<AlumniProfile> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("PG Completion Year -"),
-                    Text(widget.alumni.ugYear,style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text(widget.alumni.pgYear,style: TextStyle(fontWeight: FontWeight.bold)),
                   ],
                 ),
               ),
@@ -187,7 +187,7 @@ class _AlumniProfileState extends State<AlumniProfile> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("LinkedIn -"),
-                    Text(widget.alumni.linkedIn,style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text(widget.alumni.linkedIN,style: TextStyle(fontWeight: FontWeight.bold)),
                   ],
                 ),
               ),

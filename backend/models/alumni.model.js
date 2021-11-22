@@ -54,9 +54,11 @@ const Alumni = Schema({
     type: Map,
     required: false,
     default:{
+      "name":"",
+      "duration":""
     }
   },
-  interships: {
+  internships: {
     type: Array,
     required: false,
     default:[]
@@ -70,6 +72,8 @@ const Alumni = Schema({
     type : Map,
     required: false,
     default: {
+      "name":"",
+      "location":""
     }
   },
 

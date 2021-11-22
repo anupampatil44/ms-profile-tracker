@@ -7,8 +7,8 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ms_profile_tracker/authenticationScreens/authservices.dart';
 import 'package:ms_profile_tracker/authenticationScreens/signin_s.dart';
-import 'package:ms_profile_tracker/pages/home_a.dart';
-import 'package:ms_profile_tracker/pages/home_s.dart';
+import 'package:ms_profile_tracker/pages/alumni_dashboard.dart';
+import 'package:ms_profile_tracker/pages/student_dashboard.dart';
 
 class SignupS extends StatefulWidget {
   const SignupS({ Key? key }) : super(key: key);

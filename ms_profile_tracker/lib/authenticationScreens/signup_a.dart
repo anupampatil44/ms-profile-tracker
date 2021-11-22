@@ -7,7 +7,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ms_profile_tracker/authenticationScreens/authservices.dart';
 import 'package:ms_profile_tracker/authenticationScreens/signin_a.dart';
-import 'package:ms_profile_tracker/pages/home_a.dart';
+import 'package:ms_profile_tracker/pages/alumni_dashboard.dart';
 
 class SignupA extends StatefulWidget {
   const SignupA({ Key? key }) : super(key: key);
@@ -155,7 +155,7 @@ class _SignupAState extends State<SignupA> {
                         await storage.write(key: "userType",value:"alumni");
                         await storage.write(key: "username", value: d["username"]);
                         await storage.write(key: "password", value: d["password"]);
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx)=>HomeA()));
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx)=>HomeA(username: d["username"],password: d["password"],)));
                       }
                       else if (responseLogin.statusCode==403){
                         setState(() {

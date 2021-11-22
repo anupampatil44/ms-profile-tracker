@@ -5,8 +5,8 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:ms_profile_tracker/authenticationScreens/signin_a.dart';
 import 'package:ms_profile_tracker/authenticationScreens/signin_s.dart';
 import 'package:ms_profile_tracker/database_services/database_api.dart';
-import 'package:ms_profile_tracker/pages/home_a.dart';
-import 'package:ms_profile_tracker/pages/home_s.dart';
+import 'package:ms_profile_tracker/pages/alumni_dashboard.dart';
+import 'package:ms_profile_tracker/pages/student_dashboard.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await MongoDB.connect();
