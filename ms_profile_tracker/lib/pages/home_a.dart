@@ -508,7 +508,7 @@ class _HomeAState extends State<HomeA> {
                         padding: EdgeInsets.symmetric(vertical: 8),
                         child: ListTile(
                           leading: Text("LinkedIn"),
-                          title: Text(alumni.linkedIn),
+                          title: Text(alumni.linkedIN),
                           trailing: IconButton(
                             icon: Icon(Icons.edit),
                             onPressed: () {
