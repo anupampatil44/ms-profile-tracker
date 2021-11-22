@@ -80,7 +80,7 @@ class _SignupSState extends State<SignupS> {
                 },
                 onChanged: (val){
                   setState(){
-                    username=val;               
+                    name=val;               
                   }
                 },
               ),

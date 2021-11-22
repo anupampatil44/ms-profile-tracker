@@ -26,6 +26,7 @@ class _SignupAState extends State<SignupA> {
   var emailC=TextEditingController();
   var passwordC=TextEditingController();
 
+  String name="";
   String username="";
   String email="";
   String password="";
@@ -78,7 +79,7 @@ class _SignupAState extends State<SignupA> {
                 },
                 onChanged: (val){
                   setState(){
-                    username=val;               
+                    name=val;               
                   }
                 },
               ),
