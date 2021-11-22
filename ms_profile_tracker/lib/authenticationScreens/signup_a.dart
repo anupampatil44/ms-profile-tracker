@@ -22,6 +22,7 @@ class _SignupAState extends State<SignupA> {
   final key=GlobalKey<FormState>();
 
   var usernameC=TextEditingController();
+  var nameC=TextEditingController();
   var emailC=TextEditingController();
   var passwordC=TextEditingController();
 
@@ -50,6 +51,26 @@ class _SignupAState extends State<SignupA> {
                   label: Text("Username"),
                   //hintText: "Enter username",
                   icon: Icon(Icons.person),
+                ),
+                validator: (val){
+                  if(val=="") return "This Field Cannot Be empty";
+                  return null;
+                },
+                onChanged: (val){
+                  setState(){
+                    username=val;               
+                  }
+                },
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: TextFormField(
+                controller: nameC,
+                decoration: InputDecoration(
+                  label: Text("Name"),
+                  //hintText: "Enter username",
+                  //icon: Icon(Icons.),
                 ),
                 validator: (val){
                   if(val=="") return "This Field Cannot Be empty";
@@ -112,6 +133,7 @@ class _SignupAState extends State<SignupA> {
                     Map<String,String> data={
                       "username":usernameC.text,
                       "password":passwordC.text,
+                      "fullname":nameC.text,
                       "email":emailC.text,
                     };
                     print(data);
