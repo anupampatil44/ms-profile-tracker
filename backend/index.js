@@ -27,7 +27,7 @@ app.use("/student",studentRoute);
 data = {
   msg: "Welcome to MS Profiles Tracker",
   info: "This is a root endpoint",
-  Working: "Documentations of other endpoints will be release soon :)",
+  Working: "",
   request:
     "",
 };
@@ -35,5 +35,5 @@ data = {
 app.route("/").get((req, res) => res.json(data));
 
 app.listen(port, "0.0.0.0", () =>
-  console.log(`welcome your listinnig at port ${port}`)
+  console.log(`welcome your listening at port ${port}`)
 );

@@ -58,6 +58,7 @@ router.route("/register").post((req, res) => {
   const alumni = new Alumni({
     username: req.body.username,
     password: req.body.password,
+    fullname: req.body.fullname,
     email: req.body.email,
   });
   alumni

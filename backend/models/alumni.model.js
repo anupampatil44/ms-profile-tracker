@@ -14,8 +14,7 @@ const Alumni = Schema({
   },
   fullname: {
     type: String,
-    required: false,
-    default: ""
+    required: true,
   },
   email: {
     type: String,
@@ -55,8 +54,6 @@ const Alumni = Schema({
     type: Map,
     required: false,
     default:{
-      "name":"",
-      "duration":""
     }
   },
   interships: {
@@ -73,8 +70,6 @@ const Alumni = Schema({
     type : Map,
     required: false,
     default: {
-      "name":"",
-      "location":""
     }
   },
 
