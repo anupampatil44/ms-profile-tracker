@@ -7,6 +7,6 @@ A DBMS System for tracking PICT Alumni MS Profiles to aid students who are curre
 - Flutter App
 
 ## Project done by-
-- [Mehul Patil] (https://github.com/patilmehul) <br>
+- [Mehul Patil](https://github.com/patilmehul) <br>
 - [Rushikesh Palve](https://github.com/rushikeshkpalve)<br>
 - [Anupam Patil](https://github.com/anupampatil44)
