@@ -58,7 +58,7 @@ class _SearchState extends State<Search> {
           return Padding(
             padding: EdgeInsets.all(8),
             child: ListTile(
-              title: Text(a.username.toString()),
+              title: Text(a.fullname.toString()),
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (ctx)=>AlumniProfile(a)));
               },

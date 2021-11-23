@@ -28,8 +28,16 @@ class _HomeAState extends State<HomeA> {
   var pageController = PageController();
   var pageController2 = PageController();
 
+
+
   @override
   Widget build(BuildContext context) {
+    
+  showSnackbar(){
+    final snackbar=SnackBar(content: Text("Long press to edit"));
+    ScaffoldMessenger.of(context).showSnackBar(snackbar);
+  }
+
     return Scaffold(
         appBar: AppBar(
           title: Text("Welcome, ${widget.username}"),
@@ -57,12 +65,8 @@ class _HomeAState extends State<HomeA> {
               print(snapshot.data);
               try {
                 Map data = snapshot.data;
-                print("done");
                 Alumni alumni = Alumni.fromJson(data);
-                print("#########################################################");
                 Map<String, dynamic> trial = alumni.toMap();
-                print("_______________________________________________________________________--");
-                print(trial);
                 //print(alumni.pgYear.runtimeType);
                 //trial["company"]="FC Bayern Munich";
                 //return Center (child:Text("Display the data in proper format"));
@@ -70,14 +74,25 @@ class _HomeAState extends State<HomeA> {
                   child: ListView(
                     children: [
                       Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8),
+                        padding: EdgeInsets.all(15.0),
+                        child: Center(
+                          child: CircleAvatar(
+                            backgroundColor: Colors.blueGrey,
+                            radius: 50,
+                            child: Text(alumni.fullname[0].toUpperCase(),style: TextStyle(fontSize: 45,color: Colors.white),),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(0,1,0,5),
                         child: ListTile(
-                          leading: Text("Name"),
-                          title: Text(alumni.fullname),
-                          trailing: IconButton(
-                            icon: Icon(Icons.edit),
-                            onPressed: () {
-                              showDialog(
+                          //leading: Text("Name :"),
+                          title: Center(child: Text(alumni.fullname,style: TextStyle(fontWeight: FontWeight.bold,fontSize:25),)),
+                          onTap: (){
+                            showSnackbar();
+                          },
+                          onLongPress: (){
+                            showDialog(
                                 context: context,
                                 builder: (ctx) {
                                   var nameC = TextEditingController();
@@ -109,19 +124,28 @@ class _HomeAState extends State<HomeA> {
                                   );
                                 },
                               );
-                            },
-                          ),
+                          },
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8),
+                        padding: EdgeInsets.symmetric(vertical: 4),
                         child: ListTile(
-                          leading: Text("Email"),
-                          title: Text(alumni.email),
-                          trailing: IconButton(
-                            icon: Icon(Icons.edit),
-                            onPressed: () {
-                              showDialog(
+                          //leading: Text("Name :"),
+                          title: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 8),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Text("Email :"),
+                                Text(alumni.email),
+                              ],
+                            ),
+                          ),
+                          onTap: (){
+                            showSnackbar();
+                          },
+                          onLongPress: (){
+                            showDialog(
                                 context: context,
                                 builder: (ctx) {
                                   var emailC = TextEditingController();
@@ -153,19 +177,28 @@ class _HomeAState extends State<HomeA> {
                                   );
                                 },
                               );
-                            },
-                          ),
+                          },
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8),
+                        padding: EdgeInsets.symmetric(vertical: 4),
                         child: ListTile(
-                          leading: Text("UG Department"),
-                          title: Text(alumni.ugDept),
-                          trailing: IconButton(
-                            icon: Icon(Icons.edit),
-                            onPressed: () {
-                              showDialog(
+                          //leading: Text("Name :"),
+                          title: Padding(
+                            padding: EdgeInsets.symmetric(horizontal:8),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("UG Department :"),
+                                Text(alumni.ugDept),
+                              ],
+                            ),
+                          ),
+                          onTap: (){
+                            showSnackbar();
+                          },
+                          onLongPress: (){
+                            showDialog(
                                 context: context,
                                 builder: (ctx) {
                                   var ugDeptC = TextEditingController();
@@ -197,19 +230,28 @@ class _HomeAState extends State<HomeA> {
                                   );
                                 },
                               );
-                            },
-                          ),
+                          },
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8),
+                        padding: EdgeInsets.symmetric(vertical: 4),
                         child: ListTile(
-                          leading: Text("UG Completion Year"),
-                          title: Text(alumni.ugYear),
-                          trailing: IconButton(
-                            icon: Icon(Icons.edit),
-                            onPressed: () {
-                              showDialog(
+                          //leading: Text("Name :"),
+                          title: Padding(
+                            padding: EdgeInsets.symmetric(horizontal:8),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("UG Completion Year :"),
+                                Text(alumni.ugYear),
+                              ],
+                            ),
+                          ),
+                          onTap: (){
+                            showSnackbar();
+                          },
+                          onLongPress: (){
+                            showDialog(
                                 context: context,
                                 builder: (ctx) {
                                   var ugYearC = TextEditingController();
@@ -241,19 +283,28 @@ class _HomeAState extends State<HomeA> {
                                   );
                                 },
                               );
-                            },
-                          ),
+                          },
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 8),
                         child: ListTile(
-                          leading: Text("PG Completion Year"),
-                          title: Text(alumni.pgYear),
-                          trailing: IconButton(
-                            icon: Icon(Icons.edit),
-                            onPressed: () {
-                              showDialog(
+                          //leading: Text("Name :"),
+                          title: Padding(
+                            padding: EdgeInsets.symmetric(horizontal:8),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("PG Completion Year :"),
+                                Text(alumni.pgYear),
+                              ],
+                            ),
+                          ),
+                          onTap: (){
+                            showSnackbar();
+                          },
+                          onLongPress: (){
+                            showDialog(
                                 context: context,
                                 builder: (ctx) {
                                   var pgYearC = TextEditingController();
@@ -261,7 +312,7 @@ class _HomeAState extends State<HomeA> {
                                     content: TextFormField(
                                       controller: pgYearC,
                                       decoration: InputDecoration(
-                                        hintText: "Enter PG Completion",
+                                        hintText: "Enter PG Completion Year",
                                       ),
                                     ),
                                     actions: [
@@ -285,27 +336,29 @@ class _HomeAState extends State<HomeA> {
                                   );
                                 },
                               );
-                            },
-                          ),
+                          },
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(8),
+                        padding: EdgeInsets.symmetric(horizontal:8),
                         child: Text("PG University Details-"),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(vertical:8),
+                        padding: EdgeInsets.symmetric(vertical:4),
                         child: ListTile(
-                          leading: Text("Name"),
-                          title: Text((alumni.university!={}) ? alumni.university["name"] : ""),
-                          subtitle: Text((alumni.university!={}) ? alumni.university["location"] : ""),
-                          trailing: IconButton(
-                            icon: Icon(Icons.edit),
-                            onPressed: (){
-                              showDialog(
+                          //leading: Text("Name"),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Name: "),
+                              Text((alumni.university!={}) ? alumni.university["name"] : ""),
+                            ],
+                          ),
+                          subtitle: Text((alumni.university!={}) ? alumni.university["location"] : "",textAlign: TextAlign.right,),
+                          onLongPress: (){
+                            showDialog(
                                 context: context, 
                                 builder: (BuildContext ctx){
-
                                   var nameC=TextEditingController(),locC=TextEditingController();
                                   return AlertDialog(
                                     content: Container(
@@ -350,24 +403,27 @@ class _HomeAState extends State<HomeA> {
                                   );
                                 }
                               );
-                            },
-                          ),
+                          },
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(8),
+                        padding: EdgeInsets.symmetric(horizontal:8),
                         child: Text("PG Course Details-"),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(vertical:8),
+                        padding: EdgeInsets.symmetric(vertical:4),
                         child: ListTile(
-                          leading: Text("Name"),
-                          title: Text((alumni.pgCourse!={}) ? alumni.pgCourse["name"] : ""),
-                          subtitle: Text((alumni.pgCourse!={}) ? alumni.pgCourse["duration"] : ""),
-                          trailing: IconButton(
-                            icon: Icon(Icons.edit),
-                            onPressed: (){
-                              showDialog(
+                          //leading: Text("Name"),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Name :"),
+                              Text((alumni.pgCourse!={}) ? alumni.pgCourse["name"] : ""),
+                            ],
+                          ),
+                          subtitle: Text((alumni.pgCourse!={}) ? alumni.pgCourse["duration"] : "",textAlign: TextAlign.right),
+                          onTap: (){
+                            showDialog(
                                 context: context, 
                                 builder: (BuildContext ctx){
 
@@ -415,19 +471,28 @@ class _HomeAState extends State<HomeA> {
                                   );
                                 }
                               );
-                            },
-                          ),
+                          },
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 8),
                         child: ListTile(
-                          leading: Text("Company Name"),
-                          title: Text(alumni.company),
-                          trailing: IconButton(
-                            icon: Icon(Icons.edit),
-                            onPressed: () {
-                              showDialog(
+                          //leading: Text("Name :"),
+                          title: Padding(
+                            padding: EdgeInsets.symmetric(horizontal:8),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("Company Name :"),
+                                Text(alumni.company),
+                              ],
+                            ),
+                          ),
+                          onTap: (){
+                            showSnackbar();
+                          },
+                          onLongPress: (){
+                            showDialog(
                                 context: context,
                                 builder: (ctx) {
                                   var companyC = TextEditingController();
@@ -435,7 +500,7 @@ class _HomeAState extends State<HomeA> {
                                     content: TextFormField(
                                       controller: companyC,
                                       decoration: InputDecoration(
-                                        hintText: "Enter Company Name",
+                                        hintText: "Enter Company name",
                                       ),
                                     ),
                                     actions: [
@@ -459,19 +524,28 @@ class _HomeAState extends State<HomeA> {
                                   );
                                 },
                               );
-                            },
-                          ),
+                          },
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 8),
                         child: ListTile(
-                          leading: Text("City"),
-                          title: Text(alumni.city),
-                          trailing: IconButton(
-                            icon: Icon(Icons.edit),
-                            onPressed: () {
-                              showDialog(
+                          //leading: Text("Name :"),
+                          title: Padding(
+                            padding: EdgeInsets.symmetric(horizontal:8),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("City :"),
+                                Text(alumni.city),
+                              ],
+                            ),
+                          ),
+                          onTap: (){
+                            showSnackbar();
+                          },
+                          onLongPress: (){
+                            showDialog(
                                 context: context,
                                 builder: (ctx) {
                                   var cityC = TextEditingController();
@@ -479,7 +553,7 @@ class _HomeAState extends State<HomeA> {
                                     content: TextFormField(
                                       controller: cityC,
                                       decoration: InputDecoration(
-                                        hintText: "Enter City name",
+                                        hintText: "City",
                                       ),
                                     ),
                                     actions: [
@@ -503,19 +577,28 @@ class _HomeAState extends State<HomeA> {
                                   );
                                 },
                               );
-                            },
-                          ),
+                          },
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 8),
                         child: ListTile(
-                          leading: Text("LinkedIn"),
-                          title: Text(alumni.linkedIN),
-                          trailing: IconButton(
-                            icon: Icon(Icons.edit),
-                            onPressed: () {
-                              showDialog(
+                          //leading: Text("Name :"),
+                          title: Padding(
+                            padding: EdgeInsets.symmetric(horizontal:8),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("LinkedIn :"),
+                                Text(alumni.linkedIN),
+                              ],
+                            ),
+                          ),
+                          onTap: (){
+                            showSnackbar();
+                          },
+                          onLongPress: (){
+                            showDialog(
                                 context: context,
                                 builder: (ctx) {
                                   var linkedInC = TextEditingController();
@@ -523,15 +606,14 @@ class _HomeAState extends State<HomeA> {
                                     content: TextFormField(
                                       controller: linkedInC,
                                       decoration: InputDecoration(
-                                        hintText: "Enter LinkedIn URL",
+                                        hintText: "LinkedIn",
                                       ),
                                     ),
                                     actions: [
                                       ElevatedButton(
                                           onPressed: () async {
                                             try {
-                                              trial["linkedIN"] =
-                                                  linkedInC.text;
+                                              trial["LinkedIN"] = linkedInC.text;
                                               await MongoDB.updateDoc(trial);
                                               Fluttertoast.showToast(
                                                   msg: "Updated");
@@ -548,8 +630,7 @@ class _HomeAState extends State<HomeA> {
                                   );
                                 },
                               );
-                            },
-                          ),
+                          },
                         ),
                       ),
                       Padding(
@@ -645,16 +726,21 @@ class _HomeAState extends State<HomeA> {
                                               EdgeInsets.fromLTRB(5, 10, 5, 10),
                                           child: Card(
                                               child: ListTile(
-                                            leading: Text("Name- "),
-                                            title: Text(alumni
-                                                .internships[index]["name"]),
+                                            //leading: Text("Name- "),
+                                            title: Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Text("Name :"),
+                                                Text(alumni
+                                                    .internships[index]["name"],),
+                                              ],
+                                            ),
                                             subtitle: Text(
                                                 alumni.internships[index]
-                                                    ["duration"]),
-                                            trailing: IconButton(
-                                              icon: Icon(Icons.edit),
-                                              onPressed: () {
-                                                showDialog(
+                                                    ["duration"],textAlign: TextAlign.right),
+                                            onTap: showSnackbar,
+                                            onLongPress: (){
+                                              showDialog(
                                                     context: context,
                                                     builder:
                                                         (BuildContext ctx) {
@@ -738,8 +824,7 @@ class _HomeAState extends State<HomeA> {
                                                         ],
                                                       );
                                                     });
-                                              },
-                                            ),
+                                            },
                                           )),
                                         );
                                       },
@@ -855,16 +940,20 @@ class _HomeAState extends State<HomeA> {
                                               EdgeInsets.fromLTRB(5, 10, 5, 10),
                                           child: Card(
                                               child: ListTile(
-                                            leading: Text("Name- "),
-                                            title: Text(alumni
-                                                .scholarships[index]["name"]),
+                                            //leading: Text("Name- "),
+                                            title: Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Text("Name :"),
+                                                Text(alumni
+                                                    .scholarships[index]["name"]),
+                                              ],
+                                            ),
                                             subtitle: Text(
                                                 alumni.scholarships[index]
-                                                    ["description"]),
-                                            trailing: IconButton(
-                                              icon: Icon(Icons.edit),
-                                              onPressed: () {
-                                                showDialog(
+                                                    ["description"],textAlign: TextAlign.right),
+                                            onLongPress: (){
+                                              showDialog(
                                                     context: context,
                                                     builder:
                                                         (BuildContext ctx) {
@@ -948,8 +1037,7 @@ class _HomeAState extends State<HomeA> {
                                                         ],
                                                       );
                                                     });
-                                              },
-                                            ),
+                                            },
                                           )),
                                         );
                                       },
