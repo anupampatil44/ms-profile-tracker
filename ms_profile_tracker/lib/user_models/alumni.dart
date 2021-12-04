@@ -9,27 +9,28 @@ class Alumni{
   String fullname="",username="",password="",email="",ugDept="",ugYear="",pgYear="",company="",city="",linkedIN="";
   Map<String,dynamic> pgCourse={};
   Map<String,dynamic> university={};
+  Map<String,dynamic> qualificationExam={};
   List<dynamic> internships=[];
   List<dynamic> scholarships=[];
   
   /*
   {
-    _id: ObjectId("619b3cf55717d28944b1584d"), 
-    username: patilmehul, 
-    password: 12345678, 
+    _id: ObjectId("619d24fc471264adc1ea01bc"), 
+    username: MehulP, 
+    password: 1234, 
     fullname: Mehul Patil, 
-    email: mehulp@gmail.com, 
-    ugDept: , 
-    pgYear: , 
-    ugYear: , 
-    city: , 
-    company: , 
+    email: mehulpatil@gmail.com, 
     linkedIN: , 
-    pgCourse: {}, 
-    internships: [], 
+    city: Munich, 
+    company: Amazon, 
+    ugDept: Computer Engineering, 
+    ugYear: 2021, 
+    pgYear: 2023, 
+    pgCourse: {name: MS (CS), duration: 2 years}, 
+    university: {name: UT Austin, location: Texas}, 
+    internships: [{name: Barclays, duration: 6 months}], 
     scholarships: [], 
-    university: {}, 
-    __v: 0
+    qualificationExam: {}
   }
   */
   Alumni.fromJson(Map data){
@@ -45,6 +46,7 @@ class Alumni{
     this.company=data["company"];
     this.linkedIN=data["linkedIN"];
     this.pgCourse=data["pgCourse"];
+    this.qualificationExam=data["qualificationExam"];
     this.internships=data["internships"];
     this.scholarships=data["scholarships"];
     this.university=data["university"];
@@ -63,11 +65,11 @@ class Alumni{
       "ugDept":this.ugDept,
       "ugYear":this.ugYear,
       "pgYear":this.pgYear,
+      "qualificationExam":this.qualificationExam,
       "pgCourse":this.pgCourse,
       "university":this.university,
       "internships":this.internships,
       "scholarships":this.scholarships
     };
   }
-
 }

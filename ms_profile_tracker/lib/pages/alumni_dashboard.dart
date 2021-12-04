@@ -341,6 +341,74 @@ class _HomeAState extends State<HomeA> {
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal:8),
+                        child: Text("Qualification Exam Details-"),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical:4),
+                        child: ListTile(
+                          //leading: Text("Name"),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Name :"),
+                              Text((alumni.qualificationExam!={}) ? alumni.qualificationExam["name"] : ""),
+                            ],
+                          ),
+                          subtitle: Text((alumni.qualificationExam!={}) ? alumni.qualificationExam["year"] : "",textAlign: TextAlign.right),
+                          onTap: showSnackbar,
+                          onLongPress: (){
+                            showDialog(
+                                context: context, 
+                                builder: (BuildContext ctx){
+                                  var nameC=TextEditingController(),yearC=TextEditingController();
+                                  return AlertDialog(
+                                    content: Container(
+                                      height: 150,
+                                      child: Column(
+                                        children: [
+                                          TextFormField(
+                                            decoration : InputDecoration(
+                                              label:Text("Enter Qualification Name"),
+                                            ),
+                                            //initialValue: ((alumni.university!={}) ? alumni.university["name"] : ""),
+                                            controller: nameC,
+                                          ),
+                                          TextFormField(
+                                            decoration : InputDecoration(
+                                              label:Text("Enter the year"),
+                                            ),
+                                            //initialValue: ((alumni.university!={}) ? alumni.university["location"] : ""),
+                                            controller: yearC,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    actions: [
+                                      ElevatedButton(
+                                        onPressed: ()async{
+                                          try{
+                                            trial["qualificationExam"]={"name":nameC.text,"year":yearC.text};
+                                            await MongoDB.updateDoc(trial);
+                                            setState(() {
+                                            });
+                                            Fluttertoast.showToast(msg:"Updated");
+                                            Navigator.pop(context);
+                                          }
+                                          catch(e){
+                                            Fluttertoast.showToast(msg:"Error Occurred");
+                                          }
+                                        }, 
+                                        child: Text("Update Qualification Exam Details")
+                                      )
+                                    ],
+                                  );
+                                }
+                              );
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal:8),
                         child: Text("PG University Details-"),
                       ),
                       Padding(
@@ -354,6 +422,7 @@ class _HomeAState extends State<HomeA> {
                               Text((alumni.university!={}) ? alumni.university["name"] : ""),
                             ],
                           ),
+                          onTap: showSnackbar,
                           subtitle: Text((alumni.university!={}) ? alumni.university["location"] : "",textAlign: TextAlign.right,),
                           onLongPress: (){
                             showDialog(
@@ -422,7 +491,8 @@ class _HomeAState extends State<HomeA> {
                             ],
                           ),
                           subtitle: Text((alumni.pgCourse!={}) ? alumni.pgCourse["duration"] : "",textAlign: TextAlign.right),
-                          onTap: (){
+                          onTap: showSnackbar,
+                          onLongPress: (){
                             showDialog(
                                 context: context, 
                                 builder: (BuildContext ctx){

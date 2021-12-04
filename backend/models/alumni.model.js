@@ -50,6 +50,15 @@ const Alumni = Schema({
     required: false,
     default: ""
   },
+  qualificationExam: {
+    type: Map,
+    required: false,
+    default: {
+      "name":"",
+      "year":"",
+      "score":""
+    }
+  },
   pgCourse:{
     type: Map,
     required: false,

@@ -41,7 +41,7 @@ class _SearchState extends State<Search> {
         actions: [
           IconButton(
             onPressed: ()async{
-              Map<String,dynamic> data= (sC.text=="") ? {} : {"universityName":sC.text,"name":sC.text,"pgCourse":sC.text};
+              Map<String,dynamic> data= (sC.text=="") ? {} : {"universityName":sC.text,"fullname":sC.text,"pgCourse":sC.text};
               List<Map<String,dynamic>> l = await MongoDB.searchDocs(data);
               alumnis=List.castFrom(l);
               setState(() {

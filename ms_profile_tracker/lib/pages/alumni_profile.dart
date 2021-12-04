@@ -109,6 +109,23 @@ class _AlumniProfileState extends State<AlumniProfile> {
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
+            child: Text("Qualification Exam Details - "),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
+            child: Card(
+              child: ListTile(
+                title: Text((widget.alumni.qualificationExam != {})
+                    ? widget.alumni.qualificationExam["name"]
+                    : ""),
+                subtitle: Text((widget.alumni.qualificationExam != {})
+                    ? widget.alumni.qualificationExam["year"]
+                    : ""),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
             child: Text("University Details - "),
           ),
           Padding(
@@ -278,7 +295,7 @@ class _AlumniProfileState extends State<AlumniProfile> {
                       Container(
                         height: 100,
                         child: PageView.builder(
-                          controller: pageController,
+                          controller: pageController2,
                           itemCount: widget.alumni.scholarships.length,
                           itemBuilder: (BuildContext ctx, int index) {
                             //print(internships[index]);
@@ -304,7 +321,7 @@ class _AlumniProfileState extends State<AlumniProfile> {
                       Container(
                         child: Center(
                           child: SmoothPageIndicator(
-                            controller: pageController,
+                            controller: pageController2,
                             count: widget.alumni.internships.length,
                             effect: ScrollingDotsEffect(dotHeight: 1),
                           ),

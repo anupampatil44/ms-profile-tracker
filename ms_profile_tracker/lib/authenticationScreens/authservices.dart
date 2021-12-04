@@ -33,7 +33,8 @@ class AuthServices {
       Uri.parse(url),
       headers: {
         "Content-type": "application/json",
-        "Authorization": "Bearer $token"
+        "Authorization": "Bearer $token",
+        "Access-Control-Allow-Origin": "*"
       },
       body: json.encode(body),
     );
